@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>時鐘</title>
+    <style>
+        #clock {
+            width: 200px;
+            height: 200px;
+            background: grey;
+            border-radius: 50%;
+            margin: auto;
+            position: relative;
+        }
+
+        #hour {
+            width: 30%;
+            height: 4px;
+            background: brown;
+            border-radius: 5px;
+            position: absolute;
+            top: calc(50% - 2px);
+            /* 數值 - 數值 中間有空白 */
+            left: 50%;
+            transform-origin: left center;
+        }
+
+        #minute {
+            width: 40%;
+            height: 4px;
+            background: coral;
+            border-radius: 5px;
+            position: absolute;
+            top: calc(50% - 2px);
+            /* 數值 - 數值 中間有空白 */
+            left: 50%;
+            transform-origin: left center;
+        }
+
+        #second {
+            width: 45%;
+            height: 2px;
+            background: blanchedalmond;
+            border-radius: 4px;
+            position: absolute;
+            top: calc(50% - 2px);
+            /* 數值 - 數值 中間有空白 */
+            left: 50%;
+            transform-origin: left center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="clock">
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+
+    <script>
+        const hour = document.getElementById('hour')
+        const minute = document.getElementById('minute')
+        const second = document.getElementById('second')
+
+
+        const update = () => {
+            const now = new Date()
+            hour.style.transform = `rotate(${now.getHours() * 30 - 90}deg)`
+            minute.style.transform = `rotate(${now.getMinutes() * 6 - 90}deg)`
+            second.style.transform = `rotate(${now.getSeconds() * 6 - 90}deg)`
+        }
+
+        setInterval(update, 1000)
+        update()
+    </script>
+</body>
+
+</html>
