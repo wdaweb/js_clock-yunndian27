@@ -5,25 +5,91 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>時鐘</title>
+    <title>clock</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            letter-spacing: 0;
+        }
+
+        html,
+        body {
+            /* width: 100%; */
+            height: 100%;
+            /* background: #ccc; */
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        #wrapper {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #ffc600, #fd6585, #0d2589);
+            position: relative;
+
+            animation: bgChange 5s linear backwards;
+            /* transition: all 5s linear; */
+        }
+
+        @keyframes bgChange {
+
+            /* 0% {
+                background: linear-gradient(45deg, #000, #666, #333);
+            }
+
+            50% {
+                background: linear-gradient(45deg, #ffc600, #fd6585, #0d2589);
+            }
+
+            100% {
+                background: linear-gradient(45deg, #0d2589, #3425AF, #4D0316);
+            } */
+            0% {
+                background: #ffc600;
+            }
+
+            50% {
+                background: #fd6585;
+            }
+
+            100% {
+                background: #0d2589;
+            }
+        }
+
         #clock {
-            width: 200px;
-            height: 200px;
-            background: grey;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             margin: auto;
-            position: relative;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            border: 7px solid #fff;
+        }
+
+        #clock:hover {
+            border: 10px solid #ffc600;
+            background: rgba(0, 0, 0, 0.7);
         }
 
         #hour {
             width: 30%;
             height: 4px;
-            background: brown;
-            border-radius: 5px;
+            background: indigo;
+            border-radius: 2px;
             position: absolute;
             top: calc(50% - 2px);
-            /* 數值 - 數值 中間有空白 */
             left: 50%;
             transform-origin: left center;
         }
@@ -31,11 +97,10 @@
         #minute {
             width: 40%;
             height: 4px;
-            background: coral;
-            border-radius: 5px;
+            background: darkmagenta;
+            border-radius: 2px;
             position: absolute;
             top: calc(50% - 2px);
-            /* 數值 - 數值 中間有空白 */
             left: 50%;
             transform-origin: left center;
         }
@@ -43,38 +108,51 @@
         #second {
             width: 45%;
             height: 2px;
-            background: blanchedalmond;
-            border-radius: 4px;
+            background: antiquewhite;
+            border-radius: 2px;
             position: absolute;
-            top: calc(50% - 2px);
-            /* 數值 - 數值 中間有空白 */
+            top: calc(50% - 1px);
             left: 50%;
             transform-origin: left center;
+        }
+
+        #time {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 2rem;
         }
     </style>
 </head>
 
 <body>
-    <div id="clock">
-        <div id="hour"></div>
-        <div id="minute"></div>
-        <div id="second"></div>
+    <div id="wrapper">
+        <div id="clock">
+            <div id="hour"></div>
+            <div id="minute"></div>
+            <div id="second"></div>
+            <!-- <div id="time"></div> -->
+        </div>
+        <div id="time"></div>
     </div>
-
     <script>
         const hour = document.getElementById('hour')
         const minute = document.getElementById('minute')
         const second = document.getElementById('second')
-
+        const time = document.getElementById('time')
 
         const update = () => {
             const now = new Date()
             hour.style.transform = `rotate(${now.getHours() * 30 - 90}deg)`
             minute.style.transform = `rotate(${now.getMinutes() * 6 - 90}deg)`
             second.style.transform = `rotate(${now.getSeconds() * 6 - 90}deg)`
+            time.innerText = `${now.getFullYear()}年 ${now.getMonth() + 1}月 ${now.getDate()}日 ${now.getHours()}:${now.getMinutes()}`
         }
 
-        setInterval(update, 1000)
+        setInterval(update, 1000);
         update()
     </script>
 </body>
