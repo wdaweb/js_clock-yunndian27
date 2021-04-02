@@ -1,0 +1,343 @@
+* {
+            margin: 0;
+            padding: 0;
+            letter-spacing: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        #wrapper {
+            width: 100%;
+            height: 100%;
+            /* background: linear-gradient(45deg, #ffc600, #fd6585, #0d2589) */
+            background: radial-gradient(circle at center,#9370DB,#4B0082);
+            position: relative;
+
+            animation: bgChange 1s linear backwards;
+        }
+
+        @keyframes bgChange {
+            0% {
+                background: #ffc600;
+            }
+
+            25% {
+                background: #fd6585;
+            }
+
+            75% {
+                background: #0d2589;
+            }
+            100%{
+                background: #4B0082;
+            }
+        }
+
+        #aliceClock {
+            width: 350px;
+            height: 600px;
+            /* border: 1px solid #333; */
+
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transform-origin: top center;
+
+            animation: moveIt 3s linear alternate infinite both;
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+        }
+
+        @keyframes moveIt {
+            from {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%) rotate(1deg);
+                transform-origin: top center;
+
+            }
+
+            to {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%) rotate(-1deg);
+                transform-origin: top center;
+            }
+        }
+
+        @keyframes moveItNew {
+            0% {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%) rotate(15deg);
+                transform-origin: top center;
+
+            }
+
+            50% {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%) rotate(0deg);
+                transform-origin: top center;
+            }
+
+            100% {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%) rotate(-15deg);
+                transform-origin: top center;
+            }
+        }
+        .button{
+            width: 50px;
+            height: 50px;
+
+            /* border: 1px solid #333; */
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%,-50%)
+        }
+        .box{
+            width: 40px;
+            height: 20px;
+            background: #fff;
+            border-radius: 10px;
+            position: absolute;
+            top: 0%;
+            left: 50%;
+            transform: translateX(-50%)
+        }
+        .box2{
+            width: 20px;
+            height: 40px;
+            background: #fff;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%)
+        }
+        .circle{
+            width: 50px;
+            height: 50px;
+            border: 7px solid #fff;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 30%;
+            left: 50%;
+            transform: translateX(-50%)
+        }
+
+        #clock {
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            margin: auto;
+
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            border: 10px solid #fff;
+        }
+
+        #clock:hover {
+            border: 10px solid #ffc600;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        #hour {
+            width: 30%;
+            height: 4px;
+            background: indigo;
+            border-radius: 2px;
+
+            position: absolute;
+            top: calc(50% - 2px);
+            left: 50%;
+            transform-origin: left center;
+        }
+
+        #minute {
+            width: 40%;
+            height: 4px;
+            background: darkmagenta;
+            border-radius: 2px;
+            position: absolute;
+            top: calc(50% - 2px);
+            left: 50%;
+            transform-origin: left center;
+        }
+
+        #second {
+            width: 45%;
+            height: 2px;
+            background: antiquewhite;
+            border-radius: 2px;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transform-origin: left center;
+        }
+
+        #chain {
+            width: 7px;
+            height: 37%;
+            background: #fff;
+
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .num{
+            width: 5px;
+            height: 21px;
+            background: #fff;
+            border-radius: 20%;
+        }
+        .twelve{
+            position: absolute;
+            left: 50%;
+            top: 10%;
+            transform: translate(-50%,-50%);
+        }
+        .three{
+            position: absolute;
+            right: 10%;
+            top: 50%;
+            transform: translate(-50%,-50%) rotate(90deg);
+        }
+        .nine{
+            position: absolute;
+            left: 10%;
+            top: 50%;
+            transform: translate(-50%,-50%) rotate(90deg);
+        }
+        .six{
+            position: absolute;
+            left: 50%;
+            bottom: 3%;
+            transform: translate(-50%,-50%);
+        }
+
+        #btn {
+            display: inline-block;
+            padding: 5px 50px;
+
+            font-size: 1.2rem;
+            border: 1px solid #fff;
+            background: rgba(255, 255, 255, 0.3);
+            color: #fff;
+            border-radius: 15px;
+
+            position: absolute;
+            bottom: 28%;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+        }
+
+        #time {
+            display: inline-block;
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            /* border: 1px solid #000; */
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 1.2rem;
+        }
+
+        #rabbit {
+            width: 20%;
+            height: 28%;
+            /* border: 1px solid #333; */
+
+            position: absolute;
+            left: 78%;
+            bottom: 5%;
+
+            animation-name: run;
+            animation-duration: 1s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+
+        }
+        @keyframes run {
+            from {
+                left: 78%;
+                bottom: 5%;
+                opacity: 0;
+            }
+
+            to {
+                left: 70%;
+                bottom: 5%;
+                opacity: 1;
+            }
+        }
+        @keyframes runTwo {
+            from {
+                left: 70%;
+                bottom: 5%;
+            }
+
+            to {
+                left: 57%;
+                bottom: 5%;
+            }
+        }
+
+        #rabbit .pic {
+            width: 70%;
+            /* border: 1px solid #333; */
+
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        #rabbit .talk {
+            width: 80%;
+            /* border: 1px solid #333; */
+            z-index: 2;
+        }
+
+        #rabbit .talk img {
+            width: 70%;
+        }
+
+        #txt {
+            font-size: 1.1rem;
+            /* border: 1px solid #333; */
+
+            position: absolute;
+            top: 10%;
+            left: 10%;
+        }
+
+        #footer{
+            width: 100%;
+            height: 3%;
+            background: #000;
+
+            position: absolute;
+            bottom: 0;
+        }
