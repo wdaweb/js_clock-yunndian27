@@ -18,9 +18,7 @@
 
         html,
         body {
-            /* width: 100%; */
             height: 100%;
-            /* background: #ccc; */
         }
 
         body {
@@ -30,26 +28,13 @@
         #wrapper {
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, #ffc600, #fd6585, #0d2589);
+            background: linear-gradient(45deg, #ffc600, #fd6585, #0d2589);
             position: relative;
 
-            animation: bgChange 5s linear backwards;
-            /* transition: all 5s linear; */
+            animation: bgChange 3s linear backwards;
         }
 
         @keyframes bgChange {
-
-            /* 0% {
-                background: linear-gradient(45deg, #000, #666, #333);
-            }
-
-            50% {
-                background: linear-gradient(45deg, #ffc600, #fd6585, #0d2589);
-            }
-
-            100% {
-                background: linear-gradient(45deg, #0d2589, #3425AF, #4D0316);
-            } */
             0% {
                 background: #ffc600;
             }
@@ -63,15 +48,26 @@
             }
         }
 
+        #aliceClock {
+            width: 350px;
+            height: 700px;
+            border: 1px solid #333;
+
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         #clock {
-            width: 300px;
-            height: 300px;
+            width: 250px;
+            height: 250px;
             background: rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             margin: auto;
 
             position: absolute;
-            top: 50%;
+            top: 70%;
             left: 50%;
             transform: translate(-50%, -50%);
 
@@ -88,6 +84,7 @@
             height: 4px;
             background: indigo;
             border-radius: 2px;
+
             position: absolute;
             top: calc(50% - 2px);
             left: 50%;
@@ -110,32 +107,64 @@
             height: 2px;
             background: antiquewhite;
             border-radius: 2px;
+
             position: absolute;
-            top: calc(50% - 1px);
+            top: 50%;
             left: 50%;
+            transform: translate(-50%, -50%);
             transform-origin: left center;
+        }
+
+        #chain {
+            width: 7px;
+            height: 52%;
+            background: #fff;
+
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #btn {
+            display: inline-block;
+            padding: 5px 50px;
+
+            font-size: 1.2rem;
+            border: 1px solid #fff;
+            background: rgba(255, 255, 255, 0.3);
+            color: #fff;
+            border-radius: 15px;
+
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
         }
 
         #time {
             position: absolute;
-            top: 70%;
+            bottom: 15%;
             left: 50%;
             transform: translate(-50%, -50%);
 
             color: rgba(255, 255, 255, 0.3);
-            font-size: 2rem;
+            font-size: 1.2rem;
         }
     </style>
 </head>
 
 <body>
     <div id="wrapper">
-        <div id="clock">
-            <div id="hour"></div>
-            <div id="minute"></div>
-            <div id="second"></div>
-            <!-- <div id="time"></div> -->
+        <div id="aliceClock">
+            <div id="clock">
+                <div id="hour"></div>
+                <div id="minute"></div>
+                <div id="second"></div>
+            </div>
+            <div id="chain"></div>
         </div>
+        <div id="btn">Click</div>
         <div id="time"></div>
     </div>
     <script>
@@ -143,6 +172,7 @@
         const minute = document.getElementById('minute')
         const second = document.getElementById('second')
         const time = document.getElementById('time')
+        const btn = document.getElementById('btn')
 
         const update = () => {
             const now = new Date()
@@ -152,6 +182,9 @@
             time.innerText = `${now.getFullYear()}年 ${now.getMonth() + 1}月 ${now.getDate()}日 ${now.getHours()}:${now.getMinutes()}`
         }
 
+        const btnClick = () => {
+            btn.innerText = `wave`
+        }
         setInterval(update, 1000);
         update()
     </script>
