@@ -203,6 +203,35 @@
             color: rgba(255, 255, 255, 0.3);
             font-size: 1.2rem;
         }
+
+        #rabbit {
+            width: 30%;
+            height: 35%;
+            border: 1px solid #333;
+
+            position: absolute;
+            left: 65%;
+            bottom: 0;
+        }
+
+        #rabbit .pic {
+            width: 300px;
+            border: 1px solid #333;
+
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        #rabbit .talk {
+            width: 50%;
+            border: 1px solid #333;
+            z-index: 2;
+        }
+
+        #rabbit .talk img {
+            width: 200px;
+        }
     </style>
 </head>
 
@@ -218,6 +247,10 @@
         </div>
         <div id="btn" onclick="myFunction()">Click Me</div>
         <div id="time"></div>
+        <div id="rabbit">
+            <div class="talk"><img src="./images/talk.png" alt=""></div>
+            <img class="pic" src="./images/rabbit.png">
+        </div>
     </div>
     <script>
         const hour = document.getElementById('hour')
@@ -238,6 +271,12 @@
 
         function myFunction() {
             aliceClock.style.animationName = "moveItNew"
+            let stopMove = btn.innerText
+            btn.innerText = "It's time"
+            btn.style.background = 'rgb(0,0,0)'
+            btn.style.border = '1px solid #000'
+            btn.style.color = '#fff'
+            btn.style.cursor = 'not-allowed'
         }
 
 
