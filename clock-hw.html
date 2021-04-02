@@ -205,17 +205,51 @@
         }
 
         #rabbit {
-            width: 30%;
-            height: 35%;
+            width: 20%;
+            height: 25%;
             border: 1px solid #333;
 
             position: absolute;
-            left: 65%;
-            bottom: 0;
+            left: 78%;
+            bottom: 2%;
+
+            animation-name: running;
+            animation-duration: 3s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+
+        }
+
+        @keyframes running {
+            from {
+                left: 78%;
+                bottom: 2%;
+                opacity: 1;
+            }
+
+            to {
+                left: 78;
+                bottom: 2%;
+                opacity: 1;
+            }
+        }
+
+        @keyframes runGo {
+            from {
+                left: 78%;
+                bottom: 2%;
+                opacity: 1;
+            }
+
+            to {
+                left: 60%;
+                bottom: 2%;
+                opacity: 1;
+            }
         }
 
         #rabbit .pic {
-            width: 300px;
+            width: 70%;
             border: 1px solid #333;
 
             position: absolute;
@@ -224,13 +258,13 @@
         }
 
         #rabbit .talk {
-            width: 50%;
+            width: 80%;
             border: 1px solid #333;
             z-index: 2;
         }
 
         #rabbit .talk img {
-            width: 200px;
+            width: 70%;
         }
     </style>
 </head>
@@ -249,6 +283,7 @@
         <div id="time"></div>
         <div id="rabbit">
             <div class="talk"><img src="./images/talk.png" alt=""></div>
+            <div class="timeToGo"></div>
             <img class="pic" src="./images/rabbit.png">
         </div>
     </div>
@@ -259,6 +294,8 @@
         const time = document.getElementById('time')
         const btn = document.getElementById('btn')
         const aliceClock = document.getElementById('aliceClock')
+        const rabbit = document.getElementsByClassName('rabbit')
+        const timeToGo = document.getElementsByClassName('timeToGo')
 
         const update = () => {
             const now = new Date()
@@ -271,12 +308,13 @@
 
         function myFunction() {
             aliceClock.style.animationName = "moveItNew"
-            let stopMove = btn.innerText
             btn.innerText = "It's time"
             btn.style.background = 'rgb(0,0,0)'
             btn.style.border = '1px solid #000'
             btn.style.color = '#fff'
             btn.style.cursor = 'not-allowed'
+            time.style.opacity = '0'
+            rabbit.style.animationName = 'runGo'
         }
 
 
