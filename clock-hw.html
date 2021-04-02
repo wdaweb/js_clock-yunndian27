@@ -50,13 +50,63 @@
 
         #aliceClock {
             width: 350px;
-            height: 700px;
-            border: 1px solid #333;
+            height: 600px;
+            /* border: 1px solid #333; */
 
             position: absolute;
             top: 0;
             left: 50%;
             transform: translateX(-50%);
+            transform-origin: top center;
+
+            animation: moveIt 3s linear alternate infinite both;
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+        }
+
+        @keyframes moveIt {
+            from {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%) rotate(1deg);
+                transform-origin: top center;
+
+            }
+
+            to {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%) rotate(-1deg);
+                transform-origin: top center;
+            }
+        }
+
+        @keyframes moveItNew {
+            0% {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%) rotate(15deg);
+                transform-origin: top center;
+
+            }
+
+            50% {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%) rotate(0deg);
+                transform-origin: top center;
+            }
+
+            100% {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%) rotate(-15deg);
+                transform-origin: top center;
+            }
         }
 
         #clock {
@@ -117,7 +167,7 @@
 
         #chain {
             width: 7px;
-            height: 52%;
+            height: 48%;
             background: #fff;
 
             position: absolute;
@@ -136,18 +186,20 @@
             border-radius: 15px;
 
             position: absolute;
-            bottom: 20%;
+            bottom: 28%;
             left: 50%;
             transform: translateX(-50%);
             cursor: pointer;
         }
 
         #time {
+            display: inline-block;
             position: absolute;
             bottom: 15%;
             left: 50%;
             transform: translate(-50%, -50%);
 
+            /* border: 1px solid #000; */
             color: rgba(255, 255, 255, 0.3);
             font-size: 1.2rem;
         }
@@ -164,7 +216,7 @@
             </div>
             <div id="chain"></div>
         </div>
-        <div id="btn">Click</div>
+        <div id="btn" onclick="myFunction()">Click Me</div>
         <div id="time"></div>
     </div>
     <script>
@@ -173,18 +225,22 @@
         const second = document.getElementById('second')
         const time = document.getElementById('time')
         const btn = document.getElementById('btn')
+        const aliceClock = document.getElementById('aliceClock')
 
         const update = () => {
             const now = new Date()
             hour.style.transform = `rotate(${now.getHours() * 30 - 90}deg)`
             minute.style.transform = `rotate(${now.getMinutes() * 6 - 90}deg)`
             second.style.transform = `rotate(${now.getSeconds() * 6 - 90}deg)`
-            time.innerText = `${now.getFullYear()}年 ${now.getMonth() + 1}月 ${now.getDate()}日 ${now.getHours()}:${now.getMinutes()}`
+            time.innerText = `${now.getFullYear()}. ${now.getMonth() + 1} .${now.getDate()} \n It's ${now.getHours()}:${now.getMinutes()}`
+            time.style.textAlign = 'center'
         }
 
-        const btnClick = () => {
-            btn.innerText = `wave`
+        function myFunction() {
+            aliceClock.style.animationName = "moveItNew"
         }
+
+
         setInterval(update, 1000);
         update()
     </script>
