@@ -31,7 +31,7 @@ const func = () => {
     rabbit.style.animationName = "runTwo"
     txt.innerText = `It's ${now.getHours()}:${now.getMinutes()}. Let's go!`
     txt.style.color = '#800000'
-    txt.style.fontSize = '1.3rem'
+    txt.style.fontSize = '1.2rem'
     txt.style.left = '5%'
 }
 
